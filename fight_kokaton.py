@@ -109,14 +109,7 @@ class Bomb:
 
 
 class Beam:
-    """
-    こうかとんが放つビームに関するクラス
-    """
     def __init__(self, bird: Bird):
-        """
-        引数に基づきビームSurfaceを生成する
-        引数 bird：ビームを放つこうかとん
-        """
         self.img = pg.transform.rotozoom(pg.image.load(f"ex03/fig/beam.png"), 0, 2.0)
         self.rct = self.img.get_rect()
         self.rct.left = bird.rct.right
@@ -124,10 +117,6 @@ class Beam:
         self.vx, self.vy = +5, 0
     
     def update(self, screen: pg.Surface):
-        """
-        ビームを速度ベクトルself.vx, self.vyに基づき移動させる
-        引数 screen：画面Surface
-        """
         self.rct.move_ip(self.vx, self.vy)
         screen.blit(self.img, self.rct)
 
@@ -147,13 +136,12 @@ def main():
             if event.type == pg.QUIT:
                 return
             if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
-                beam = Beam(bird)  # ビームクラスのインスタンスを生成する
+                beam = Beam(bird)
                 
         screen.blit(bg_img, [0, 0])
         
         if bomb is not None:
             if bird.rct.colliderect(bomb.rct):
-                # ゲームオーバー時に，こうかとん画像を切り替え，1秒間表示させる
                 bird.change_img(8, screen)
                 pg.display.update()
                 time.sleep(1)
@@ -164,7 +152,7 @@ def main():
                 bomb = None
                 beam = None
                 bird.change_img(6, screen)
-                pg.display.update()              
+                pg.display.update()
 
         key_lst = pg.key.get_pressed()
         bird.update(key_lst, screen)
