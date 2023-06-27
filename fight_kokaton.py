@@ -35,6 +35,7 @@ class Score:
         text_rect.center = (100, HEIGHT - 50)  # 文字列の中心座標の設定
         screen.blit(text_surface, text_rect)  # 文字列をスクリーンに描画
 
+
 class Bird:
     delta = {  # 押下キーと移動量の辞書
         pg.K_UP: (0, -5),
