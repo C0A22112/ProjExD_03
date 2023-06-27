@@ -88,7 +88,6 @@ class Bomb:
         self.vx, self.vy = +5, +5
 
     def update(self, screen: pg.Surface):
-    
         yoko, tate = check_bound(self.rct)
         if not yoko:
             self.vx *= -1
