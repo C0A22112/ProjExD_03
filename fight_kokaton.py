@@ -139,8 +139,6 @@ def main():
                     bird.change_img(6, screen)
                     pg.display.update()
                     score.value += 1
-                    
-        score.update(screen)
         
         for bomb in bombs:
             if bird.rct.colliderect(bomb.rct):
